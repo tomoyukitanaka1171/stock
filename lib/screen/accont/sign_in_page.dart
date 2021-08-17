@@ -1,5 +1,5 @@
 import 'package:bottom_nav_app/constrains.dart';
-import 'package:bottom_nav_app/model/signup_model.dart';
+import 'package:bottom_nav_app/model/sign_in_model.dart';
 import 'package:bottom_nav_app/screen/accont/signUp_page.dart';
 import 'package:bottom_nav_app/sign_parts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,9 +16,9 @@ class SignInPage extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 0,
       ),
-      body: ChangeNotifierProvider<SignUpModel>(
-        create: (_) => SignUpModel(),
-        child: Consumer<SignUpModel>(
+      body: ChangeNotifierProvider<SignInModel>(
+        create: (_) => SignInModel()..checkSignIn(context),
+        child: Consumer<SignInModel>(
           builder: (context, model, child) {
             return Stack(
               children: [
@@ -119,6 +119,7 @@ class SignInPage extends StatelessWidget {
                                                 return loginAlertDialog(
                                                     context, e);
                                               });
+                                          model.endLoading();
                                         }
                                       },
                                       child: Text(

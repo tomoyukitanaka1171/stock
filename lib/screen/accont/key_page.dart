@@ -26,7 +26,7 @@ class KeyPage extends StatelessWidget {
                       children: [
                         Container(
                           child: Text(
-                            '秘密の合言葉を決めてください',
+                            '彼女の名前を教えてください',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -42,7 +42,7 @@ class KeyPage extends StatelessWidget {
                               )),
                               child: TextField(
                                 onChanged: (text) {
-                                  model.key = text;
+                                  model.keyword = text;
                                 },
                               ),
                             ),

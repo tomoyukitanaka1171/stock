@@ -9,7 +9,7 @@ class KeyModel extends ChangeNotifier {
   final roomRef = _firestoreInstance.collection('room');
 
   Future<void> addKey() async {
-    await FirebaseFirestore.instance.collection('room').doc(keyword).set({
+    await FirebaseFirestore.instance.collection('room').add({
       'key': keyword,
       'createdAt': Timestamp.now(),
     });

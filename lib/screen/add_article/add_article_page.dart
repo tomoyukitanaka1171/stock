@@ -8,7 +8,7 @@ class AddArticlePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<AddArticleModel>(
-      create: (_) => AddArticleModel(),
+      create: (_) => AddArticleModel(null),
       child: Consumer<AddArticleModel>(
         builder: (context, model, child) {
           return Padding(

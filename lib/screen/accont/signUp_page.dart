@@ -1,6 +1,6 @@
 import 'package:bottom_nav_app/constrains.dart';
 import 'package:bottom_nav_app/model/signup_model.dart';
-import 'package:bottom_nav_app/screen/accont/gender_page.dart';
+import 'package:bottom_nav_app/screen/nav.dart';
 import 'package:bottom_nav_app/sign_parts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -88,7 +88,7 @@ class SignUpPage extends StatelessWidget {
                                       Navigator.push(context,
                                           CupertinoPageRoute(
                                               builder: (context) {
-                                        return GenderPage(model.documentId);
+                                        return Nav();
                                       }));
                                     } on FirebaseAuthException catch (e) {
                                       if (e.code == 'email-already-in-use') {

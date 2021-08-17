@@ -6,9 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddArticleModel extends ChangeNotifier {
-  AddArticleModel();
+  AddArticleModel(this.keyword);
   File? imageFile;
   bool isLoading = false;
+  String? keyword;
 
   startLoading() {
     isLoading = true;
@@ -49,6 +50,7 @@ class AddArticleModel extends ChangeNotifier {
     }
 
     final imageURL = await _uploadImage();
+    print(keyword);
 
     await FirebaseFirestore.instance.collection('article').add({
       'title': 'd',

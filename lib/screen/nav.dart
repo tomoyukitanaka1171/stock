@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../constrains.dart';
-import '../model/add_article_model.dart';
 import '../model/nav_model.dart';
 
 class Nav extends StatelessWidget {
@@ -20,8 +19,13 @@ class Nav extends StatelessWidget {
                     toolbarHeight: 0,
                     elevation: 0,
                   ),
-                  body: Container(
-                    child: model.widgetOptions.elementAt(model.selectedIndex),
+                  body: Column(
+                    children: [
+                      Container(
+                        child:
+                            model.widgetOptions.elementAt(model.selectedIndex),
+                      ),
+                    ],
                   ),
                   bottomNavigationBar: BottomNavigationBar(
                     elevation: 5,
@@ -47,21 +51,6 @@ class Nav extends StatelessWidget {
                     onTap: model.onItemTap,
                   ),
                 );
-              });
-            }),
-        ChangeNotifierProvider<AddArticleModel>(
-            create: (_) => AddArticleModel(),
-            builder: (context, snapshot) {
-              return Consumer<AddArticleModel>(
-                  builder: (context, model, child) {
-                return model.isLoading
-                    ? Container(
-                        color: Colors.black26,
-                        child: Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                      )
-                    : SizedBox();
               });
             }),
       ],

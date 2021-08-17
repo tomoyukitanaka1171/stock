@@ -5,8 +5,9 @@ import '../domain/article.dart';
 
 class ArticleCardModel extends ChangeNotifier {
   List<Article>? articles;
+  String keyword = '';
 
-  void fetchArticleList() {
+  void fetchArticleList() async {
     final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
         .collection('article')
         .orderBy("title")

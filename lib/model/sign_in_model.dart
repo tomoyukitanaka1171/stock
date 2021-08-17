@@ -1,8 +1,9 @@
+import 'package:bottom_nav_app/screen/nav.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class SignUpModel extends ChangeNotifier {
+class SignInModel extends ChangeNotifier {
   String mail = '';
   String pass = '';
   String key = '';
@@ -87,5 +88,17 @@ class SignUpModel extends ChangeNotifier {
     FirebaseFirestore.instance.collection('user').doc(id).set(
         {'gender': 'woman'},
         SetOptions(merge: true)); //kinoko@icloud.com 123456
+  }
+
+  checkSignIn(context) {
+    FirebaseAuth.instance.userChanges().listen((User? user) {
+      if (user == null) {
+        print('User is currently signed out!');
+      } else {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return Nav();
+        }));
+      }
+    });
   }
 }
