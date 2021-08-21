@@ -1,3 +1,4 @@
+import 'package:bottom_nav_app/model/profile_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,8 @@ class SignUpModel extends ChangeNotifier {
       throw 'パスワードを入力してください';
     }
 
+    //名前をイニシャライズします
+
     final User? user = (await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: mail, password: pass))
         .user;
@@ -43,15 +46,7 @@ class SignUpModel extends ChangeNotifier {
     }
     String? email = user.email;
 
-    final users = await FirebaseFirestore.instance.collection('user').add({
-      'email': email,
-      'createdAt': Timestamp.now(),
-    }); //kinoko@icloud.com 123456
-
-    final DocumentSnapshot _user = await users.get();
-    final documentId = _user.id;
-    this.documentId = documentId;
-    print(documentId);
+    ProfileModel.initializeProfile(email);
   }
 
   Future<void> signIn() async {
@@ -87,5 +82,19 @@ class SignUpModel extends ChangeNotifier {
     FirebaseFirestore.instance.collection('user').doc(id).set(
         {'gender': 'woman'},
         SetOptions(merge: true)); //kinoko@icloud.com 123456
+  }
+
+  createRoom() {
+    // createRoom
+    final currentUser = FirebaseAuth.instance.currentUser;
+    final uid = currentUser?.uid;
+
+    final _firebaseInstance = FirebaseFirestore.instance;
+
+    _firebaseInstance.collection('room').doc(uid).set({
+      'uid': uid,
+      'title': 'hello',
+    });
+    print(uid);
   }
 }

@@ -1,16 +1,27 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-import '../domain/article.dart';
+import '../../domain/article.dart';
 
 class ArticleCardModel extends ChangeNotifier {
   List<Article>? articles;
-  String keyword = '';
+  String title = '';
+  static Timestamp? createdAt = Timestamp.now();
+  String? date = DateFormat.yMMM('ja').format(createdAt!.toDate());
 
   void fetchArticleList() async {
+    final currentUser = FirebaseAuth.instance.currentUser;
+    final uid = currentUser?.uid;
+
     final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
+        .collection('room')
+        .doc(uid!)
         .collection('article')
-        .orderBy("title")
+        .doc(date)
+        .collection('article')
+        .orderBy('createdAt', descending: false)
         .snapshots();
 
     _usersStream.listen((QuerySnapshot snapshot) {
@@ -18,10 +29,10 @@ class ArticleCardModel extends ChangeNotifier {
           snapshot.docs.map((DocumentSnapshot document) {
         Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
 
-        final String title = data["title"];
         final String content = data["content"];
-        final String imageURl = data["imageURL"];
-        return Article(title, content, imageURl);
+        final Timestamp createdAt = data["createdAt"];
+
+        return Article(content, createdAt);
       }).toList();
       this.articles = articles;
       notifyListeners();

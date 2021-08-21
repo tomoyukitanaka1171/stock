@@ -1,10 +1,9 @@
 import 'package:bottom_nav_app/constrains.dart';
-import 'package:bottom_nav_app/model/signup_model.dart';
+import 'package:bottom_nav_app/model/login_model/signup_model.dart';
+import 'package:bottom_nav_app/screen/nav_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'key_page.dart';
 
 class GenderPage extends StatelessWidget {
   GenderPage(this.id);
@@ -51,7 +50,7 @@ class GenderPage extends StatelessWidget {
                                   await model.addManGender(id);
                                   Navigator.push(context,
                                       CupertinoPageRoute(builder: (context) {
-                                    return KeyPage();
+                                    return NavPage();
                                   }));
                                 },
                                 child: Row(
@@ -86,7 +85,7 @@ class GenderPage extends StatelessWidget {
                                   await model.addWomanGender(id);
                                   Navigator.push(context, CupertinoPageRoute(
                                     builder: (context) {
-                                      return KeyPage();
+                                      return NavPage();
                                     },
                                   ));
                                 },

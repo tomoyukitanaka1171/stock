@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'constrains.dart';
-
 Widget loginAlertDialog(context, e) {
   return AlertDialog(
     title: Text(
       'エラー',
-      textAlign: TextAlign.center,
       style: TextStyle(
-        color: defaultColor,
+        color: Theme.of(context).primaryColor,
         fontWeight: FontWeight.bold,
       ),
     ),
@@ -26,7 +23,7 @@ Widget loginAlertDialog(context, e) {
               child: Text(
                 "Cancel",
                 style: TextStyle(
-                  color: defaultColor,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               onPressed: () => Navigator.pop(context),
@@ -35,7 +32,7 @@ Widget loginAlertDialog(context, e) {
               child: Text(
                 "OK",
                 style: TextStyle(
-                  color: defaultColor,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               onPressed: () => Navigator.pop(context),
@@ -51,9 +48,8 @@ Widget mailAlertDialog(context, e) {
   return AlertDialog(
     title: Text(
       'エラー',
-      textAlign: TextAlign.center,
       style: TextStyle(
-        color: defaultColor,
+        color: Theme.of(context).primaryColor,
         fontWeight: FontWeight.bold,
       ),
     ),
@@ -71,7 +67,7 @@ Widget mailAlertDialog(context, e) {
               child: Text(
                 "Cancel",
                 style: TextStyle(
-                  color: defaultColor,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               onPressed: () => Navigator.pop(context),
@@ -80,7 +76,7 @@ Widget mailAlertDialog(context, e) {
               child: Text(
                 "OK",
                 style: TextStyle(
-                  color: defaultColor,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               onPressed: () => Navigator.pop(context),
@@ -96,9 +92,8 @@ Widget passAlertDialog(context, e) {
   return AlertDialog(
     title: Text(
       'エラー',
-      textAlign: TextAlign.center,
       style: TextStyle(
-        color: defaultColor,
+        color: Theme.of(context).primaryColor,
         fontWeight: FontWeight.bold,
       ),
     ),
@@ -116,7 +111,7 @@ Widget passAlertDialog(context, e) {
               child: Text(
                 "Cancel",
                 style: TextStyle(
-                  color: defaultColor,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               onPressed: () => Navigator.pop(context),
@@ -125,7 +120,7 @@ Widget passAlertDialog(context, e) {
               child: Text(
                 "OK",
                 style: TextStyle(
-                  color: defaultColor,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               onPressed: () => Navigator.pop(context),
@@ -141,9 +136,8 @@ Widget signInAlertDialog(context, e) {
   return AlertDialog(
     title: Text(
       'エラー',
-      textAlign: TextAlign.center,
       style: TextStyle(
-        color: defaultColor,
+        color: Theme.of(context).primaryColor,
         fontWeight: FontWeight.bold,
       ),
     ),
@@ -158,7 +152,7 @@ Widget signInAlertDialog(context, e) {
               child: Text(
                 "Cancel",
                 style: TextStyle(
-                  color: defaultColor,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               onPressed: () => Navigator.pop(context),
@@ -167,7 +161,7 @@ Widget signInAlertDialog(context, e) {
               child: Text(
                 "OK",
                 style: TextStyle(
-                  color: defaultColor,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               onPressed: () => Navigator.pop(context),

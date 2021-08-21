@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Article {
-  Article(this.content, this.createdAt);
+class Chat {
+  Chat(this.name, this.content, this.createdAt);
+  String name;
   String content;
   Timestamp createdAt;
 }

@@ -20,6 +20,9 @@ dependencies:
   image_picker: ^0.8.3+2
   firebase_storage: ^10.0.1
   firebase_auth: ^3.0.1
+  intl: ^0.17.0
+  shared_preferences: ^2.0.6
+  table_calendar: ^3.0.2
 
 dev_dependencies:
   flutter_test:
@@ -32,7 +35,7 @@ flutter:
     - assets/
 
 flutter_native_splash:
-  image: "assets/logo-w.png"
-  color: "e42c64"
+  image: "assets/logo.png"
+  color: "FFFFFF"
   fullscreen: true
 

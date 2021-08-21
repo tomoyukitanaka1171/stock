@@ -1,5 +1,4 @@
-import 'package:bottom_nav_app/constrains.dart';
-import 'package:bottom_nav_app/model/sign_in_model.dart';
+import 'package:bottom_nav_app/model/login_model/sign_in_model.dart';
 import 'package:bottom_nav_app/screen/accont/signUp_page.dart';
 import 'package:bottom_nav_app/sign_parts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../nav.dart';
+import '../nav_page.dart';
 
 class SignInPage extends StatelessWidget {
   @override
@@ -31,14 +30,14 @@ class SignInPage extends StatelessWidget {
                         children: [
                           Container(
                             width: 150,
-                            child: Image.asset('assets/logo-p.png'),
+                            child: Image.asset('assets/logo.png'),
                           ),
                           SizedBox(height: 30),
                           Row(
                             children: [
                               Icon(
                                 Icons.mail,
-                                color: defaultColor,
+                                color: Theme.of(context).primaryColor,
                               ),
                               SizedBox(width: 20),
                               Expanded(
@@ -56,7 +55,10 @@ class SignInPage extends StatelessWidget {
                           SizedBox(height: 20),
                           Row(
                             children: [
-                              Icon(Icons.vpn_key, color: defaultColor),
+                              Icon(
+                                Icons.vpn_key,
+                                color: Theme.of(context).primaryColor,
+                              ),
                               SizedBox(width: 20),
                               Expanded(
                                 child: TextField(
@@ -91,7 +93,7 @@ class SignInPage extends StatelessWidget {
                                           Navigator.push(context,
                                               MaterialPageRoute(
                                                   builder: (context) {
-                                            return Nav();
+                                            return NavPage();
                                           }));
                                         } on FirebaseAuthException catch (e) {
                                           if (e.code == 'user-not-found') {
@@ -129,7 +131,8 @@ class SignInPage extends StatelessWidget {
                                       style: ButtonStyle(
                                         backgroundColor:
                                             MaterialStateProperty.all(
-                                                defaultColor),
+                                          Theme.of(context).primaryColor,
+                                        ),
                                       ),
                                     ),
                                   ),

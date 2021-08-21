@@ -1,6 +1,6 @@
-import 'package:bottom_nav_app/constrains.dart';
-import 'package:bottom_nav_app/model/signup_model.dart';
-import 'package:bottom_nav_app/screen/nav.dart';
+import 'package:bottom_nav_app/model/login_model/signup_model.dart';
+import 'package:bottom_nav_app/screen/accont/sign_in_page.dart';
+import 'package:bottom_nav_app/screen/nav_page.dart';
 import 'package:bottom_nav_app/sign_parts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -27,14 +27,14 @@ class SignUpPage extends StatelessWidget {
                     children: [
                       Container(
                         width: 150,
-                        child: Image.asset('assets/logo-p.png'),
+                        child: Image.asset('assets/logo.png'),
                       ),
                       SizedBox(height: 30),
                       Row(
                         children: [
                           Icon(
                             Icons.mail,
-                            color: defaultColor,
+                            color: Theme.of(context).primaryColor,
                           ),
                           SizedBox(width: 20),
                           Expanded(
@@ -52,7 +52,10 @@ class SignUpPage extends StatelessWidget {
                       SizedBox(height: 20),
                       Row(
                         children: [
-                          Icon(Icons.vpn_key, color: defaultColor),
+                          Icon(
+                            Icons.vpn_key,
+                            color: Theme.of(context).primaryColor,
+                          ),
                           SizedBox(width: 20),
                           Expanded(
                             child: TextField(
@@ -84,11 +87,12 @@ class SignUpPage extends StatelessWidget {
                                     try {
                                       model.startLoading();
                                       await model.signUp();
+                                      await model.createRoom();
                                       model.endLoading();
                                       Navigator.push(context,
                                           CupertinoPageRoute(
                                               builder: (context) {
-                                        return Nav();
+                                        return NavPage();
                                       }));
                                     } on FirebaseAuthException catch (e) {
                                       if (e.code == 'email-already-in-use') {
@@ -124,8 +128,9 @@ class SignUpPage extends StatelessWidget {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   style: ButtonStyle(
-                                    backgroundColor:
-                                        MaterialStateProperty.all(defaultColor),
+                                    backgroundColor: MaterialStateProperty.all(
+                                      Theme.of(context).primaryColor,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -139,7 +144,10 @@ class SignUpPage extends StatelessWidget {
                             padding: EdgeInsets.only(top: 20),
                             child: TextButton(
                               onPressed: () async {
-                                Navigator.pop(context);
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return SignInPage();
+                                }));
                               },
                               child: RichText(
                                 text: TextSpan(

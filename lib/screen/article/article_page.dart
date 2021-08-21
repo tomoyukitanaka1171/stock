@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../domain/article.dart';
-import '../../model/article_card_model.dart';
+import '../../model/article_model/article_card_model.dart';
 import 'article_card.dart';
 
 class ArticlePage extends StatelessWidget {
@@ -19,14 +19,26 @@ class ArticlePage extends StatelessWidget {
           }
 
           final List<Widget> widgets = articles
-              .map((article) =>
-                  ArticleCard(article.title, article.content, article.imageURL))
+              .map((article) => ArticleCard(article.content, article.createdAt))
               .toList();
-          return SingleChildScrollView(
-            child: Column(
-              children: widgets,
-            ),
-          );
+          return StreamBuilder<Object>(
+              stream: null,
+              builder: (context, snapshot) {
+                return Column(
+                  children: [
+                    SizedBox(height: 8),
+                    ListView.builder(
+                      reverse: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: widgets.length,
+                      itemBuilder: (context, index) {
+                        return widgets[index];
+                      },
+                    ),
+                  ],
+                );
+              });
         },
       ),
     );

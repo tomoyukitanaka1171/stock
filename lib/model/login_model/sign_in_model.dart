@@ -1,4 +1,4 @@
-import 'package:bottom_nav_app/screen/nav.dart';
+import 'package:bottom_nav_app/screen/nav_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -96,7 +96,7 @@ class SignInModel extends ChangeNotifier {
         print('User is currently signed out!');
       } else {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return Nav();
+          return NavPage();
         }));
       }
     });
