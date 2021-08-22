@@ -1,8 +1,8 @@
 import 'package:bottom_nav_app/model/dropdown_model.dart';
 import 'package:bottom_nav_app/screen/article/archive_page.dart';
 import 'package:bottom_nav_app/screen/article/article_page.dart';
-import 'package:bottom_nav_app/screen/calendar_page.dart';
-import 'package:bottom_nav_app/screen/chat_page.dart';
+import 'package:bottom_nav_app/screen/calendar/calendar_page.dart';
+import 'package:bottom_nav_app/screen/chat/chat_page.dart';
 import 'package:bottom_nav_app/screen/setting/settigs_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -50,13 +50,29 @@ class NavModel extends ChangeNotifier {
                             return ArchivePage(article);
                           }));
                         },
-                        child: Text(
-                          article,
-                          style: TextStyle(color: Colors.black),
+                        child: Column(
+                          children: [
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                article,
+                                style: TextStyle(
+                                    color: Colors.black87,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                            ),
+                            Divider(
+                              thickness: 1,
+                            )
+                          ],
                         )))
                     .toList();
 
                 return PopupMenuButton<String>(
+                    icon: Icon(
+                      Icons.archive_outlined,
+                      color: Colors.white,
+                    ),
                     onSelected: (String? newValue) {
                       model.setValue(dropdownValue, newValue);
                     },

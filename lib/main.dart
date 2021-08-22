@@ -9,8 +9,6 @@ import 'model/mytheme.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  final themeKey = MyTheme.getPrefs();
-  print(themeKey);
   initializeDateFormatting('ja');
   runApp(MyApp());
 }
@@ -20,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<MyTheme>(
-        create: (_) => MyTheme(),
+        create: (_) => MyTheme()..getPrefs(),
         builder: (context, snapshot) {
           return Consumer<MyTheme>(builder: (context, model, child) {
             return MaterialApp(
@@ -28,8 +26,8 @@ class MyApp extends StatelessWidget {
               title: 'Flutter Demo',
               home: SignInPage(),
               theme: ThemeData(
-                primaryColor: model.currentColor,
-                accentColor: model.currentColor,
+                primaryColor: model.customSwatch[model.currentNum],
+                accentColor: model.customSwatch[model.currentNum],
               ),
             );
           });

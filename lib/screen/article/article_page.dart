@@ -19,7 +19,10 @@ class ArticlePage extends StatelessWidget {
           }
 
           final List<Widget> widgets = articles
-              .map((article) => ArticleCard(article.content, article.createdAt))
+              .map((article) => ArticleCard(
+                  content: article.content,
+                  createdAt: article.createdAt,
+                  documentId: article.documentId))
               .toList();
           return StreamBuilder<Object>(
               stream: null,

@@ -31,8 +31,9 @@ class ArticleCardModel extends ChangeNotifier {
 
         final String content = data["content"];
         final Timestamp createdAt = data["createdAt"];
+        final String documentId = document.id;
 
-        return Article(content, createdAt);
+        return Article(content, createdAt, documentId);
       }).toList();
       this.articles = articles;
       notifyListeners();

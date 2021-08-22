@@ -1,5 +1,6 @@
 import 'package:bottom_nav_app/model/settings_model.dart';
 import 'package:bottom_nav_app/screen/accont/sign_in_page.dart';
+import 'package:bottom_nav_app/screen/setting/about_app_page.dart';
 import 'package:bottom_nav_app/screen/setting/profile_page.dart';
 import 'package:bottom_nav_app/screen/setting/settings_color_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -82,7 +83,12 @@ class SettingsPage extends StatelessWidget {
                 Column(
                   children: [
                     ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return AboutAppPage();
+                        }));
+                      },
                       title: Text(
                         'このアプリについて',
                       ),
@@ -107,12 +113,6 @@ class SettingsPage extends StatelessWidget {
                               content: Text("本当にログアウトしますか？"),
                               actions: [
                                 TextButton(
-                                  child: Text(
-                                    "いいえ",
-                                  ),
-                                  onPressed: () => Navigator.pop(context),
-                                ),
-                                TextButton(
                                   child: Text("はい"),
                                   onPressed: () async {
                                     await _signOut();
@@ -121,6 +121,12 @@ class SettingsPage extends StatelessWidget {
                                       return SignInPage();
                                     }));
                                   },
+                                ),
+                                TextButton(
+                                  child: Text(
+                                    "いいえ",
+                                  ),
+                                  onPressed: () => Navigator.pop(context),
                                 ),
                               ],
                             );

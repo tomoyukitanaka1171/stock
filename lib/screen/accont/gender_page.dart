@@ -1,4 +1,4 @@
-import 'package:bottom_nav_app/constrains.dart';
+import 'package:bottom_nav_app/constrains/constrains.dart';
 import 'package:bottom_nav_app/model/login_model/signup_model.dart';
 import 'package:bottom_nav_app/screen/nav_page.dart';
 import 'package:flutter/cupertino.dart';

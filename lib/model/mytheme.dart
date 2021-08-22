@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MyTheme extends ChangeNotifier {
-  Color? currentColor;
+  Color? swatchColor;
+  int currentNum = 50;
 
-  static Future<String?> getPrefs() async {
+  Future<void> getPrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? currentTheme = prefs.getString('themePrefKey');
+    int? currentNum = prefs.getInt('themePrefKey');
 
-    return currentTheme;
+    this.currentNum = currentNum!;
   }
 
   MaterialColor customSwatch = const MaterialColor(
     0xFFA4C639,
     const <int, Color>{
-      50: const Color(0xFF1E7CDC),
+      50: const Color(0xFF3FA830),
       100: const Color(0xFF1535B1),
       200: const Color(0xFF29BED2),
       300: const Color(0xFFE7BA16),
@@ -28,42 +29,50 @@ class MyTheme extends ChangeNotifier {
   );
 
   toggleGreen() async {
-    String themePrefKey = "green";
-
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString(themePrefKey, themePrefKey);
-    final swatchColor = customSwatch[50];
-    this.currentColor = swatchColor;
+    prefs.setInt('themePrefKey', 50);
+
+    this.currentNum = 50;
     notifyListeners();
   }
 
   toggleBlue() async {
-    final swatchColor = customSwatch[100];
-    this.currentColor = swatchColor;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt('themePrefKey', 100);
+
+    this.currentNum = 100;
     notifyListeners();
   }
 
   toggleCyan() async {
-    final swatchColor = customSwatch[200];
-    this.currentColor = swatchColor;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt('themePrefKey', 200);
+
+    this.currentNum = 200;
     notifyListeners();
   }
 
   toggleYellow() async {
-    final swatchColor = customSwatch[300];
-    this.currentColor = swatchColor;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt('themePrefKey', 300);
+
+    this.currentNum = 300;
     notifyListeners();
   }
 
   toggleOrange() async {
-    final swatchColor = customSwatch[400];
-    this.currentColor = swatchColor;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt('themePrefKey', 400);
+
+    this.currentNum = 400;
     notifyListeners();
   }
 
   toggleRed() async {
-    final swatchColor = customSwatch[500];
-    this.currentColor = swatchColor;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt('themePrefKey', 500);
+
+    this.currentNum = 500;
     notifyListeners();
   }
 }

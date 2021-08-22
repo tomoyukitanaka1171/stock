@@ -1,6 +1,6 @@
 import 'package:bottom_nav_app/model/login_model/sign_in_model.dart';
 import 'package:bottom_nav_app/screen/accont/signUp_page.dart';
-import 'package:bottom_nav_app/sign_parts.dart';
+import 'package:bottom_nav_app/screen/accont/sign_parts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -62,6 +62,7 @@ class SignInPage extends StatelessWidget {
                               SizedBox(width: 20),
                               Expanded(
                                 child: TextField(
+                                  obscureText: true,
                                   decoration: InputDecoration(
                                     hintText: 'パスワードを入力',
                                   ),

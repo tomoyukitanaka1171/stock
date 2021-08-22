@@ -1,4 +1,4 @@
-import 'package:bottom_nav_app/constrains.dart';
+import 'package:bottom_nav_app/constrains/constrains.dart';
 import 'package:bottom_nav_app/model/archive_mode/archive_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,14 +25,22 @@ class ArchivePage extends StatelessWidget {
           }
 
           final List<Widget> widgets = articles
-              .map((article) => ArticleCard(article.content, article.createdAt))
+              .map((article) => ArticleCard(
+                  content: article.content, createdAt: article.createdAt))
               .toList();
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Theme.of(context).primaryColor,
               title: Text(
                 'アーカイブ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.white),
+              ),
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back, color: Colors.white),
+                onPressed: () => Navigator.of(context).pop(),
               ),
             ),
             body: SingleChildScrollView(

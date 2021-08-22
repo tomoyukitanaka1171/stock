@@ -27,6 +27,8 @@ class ArchiveModel extends ChangeNotifier {
         .collection('article')
         .snapshots();
 
+    print(uid);
+
     _usersStream.listen((QuerySnapshot snapshot) {
       final List<Article> articles =
           snapshot.docs.map((DocumentSnapshot document) {
@@ -34,8 +36,9 @@ class ArchiveModel extends ChangeNotifier {
 
         final String content = data["content"];
         final Timestamp createdAt = data["createdAt"];
+        final String documentId = document.id;
 
-        return Article(content, createdAt);
+        return Article(content, createdAt, documentId);
       }).toList();
       this.articles = articles;
       notifyListeners();
