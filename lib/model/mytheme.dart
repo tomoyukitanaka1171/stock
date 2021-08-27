@@ -4,12 +4,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 class MyTheme extends ChangeNotifier {
   Color? swatchColor;
   int currentNum = 50;
+  bool isLoading = true;
 
   Future<void> getPrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int? currentNum = prefs.getInt('themePrefKey');
 
     this.currentNum = currentNum!;
+    isLoading = false;
+    notifyListeners();
   }
 
   MaterialColor customSwatch = const MaterialColor(

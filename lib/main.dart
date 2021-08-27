@@ -21,6 +21,10 @@ class MyApp extends StatelessWidget {
         create: (_) => MyTheme()..getPrefs(),
         builder: (context, snapshot) {
           return Consumer<MyTheme>(builder: (context, model, child) {
+            if (model.isLoading) {
+              return CircularProgressIndicator();
+            }
+
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Flutter Demo',

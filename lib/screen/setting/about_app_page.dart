@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutAppPage extends StatelessWidget {
   const AboutAppPage({Key? key}) : super(key: key);
@@ -36,7 +37,13 @@ class AboutAppPage extends StatelessWidget {
             thickness: 1,
           ),
           ListTile(
-            onTap: () {},
+            onTap: () async {
+              final url =
+                  "https://github.com/tomoyukitanaka1171/stock_documents/blob/main/TermsService.md";
+              if (await canLaunch(url)) {
+                await launch(url);
+              }
+            },
             title: Text(
               '利用規約',
             ),
@@ -48,7 +55,13 @@ class AboutAppPage extends StatelessWidget {
             thickness: 1,
           ),
           ListTile(
-            onTap: () {},
+            onTap: () async {
+              final url =
+                  "https://github.com/tomoyukitanaka1171/stock_documents/blob/main/Privacy_Policy.md";
+              if (await canLaunch(url)) {
+                await launch(url);
+              }
+            },
             title: Text(
               'プライバシーポリシー',
             ),
@@ -60,7 +73,12 @@ class AboutAppPage extends StatelessWidget {
             thickness: 1,
           ),
           ListTile(
-            onTap: () {},
+            onTap: () async {
+              final url = "https://donack.org/contact/";
+              if (await canLaunch(url)) {
+                await launch(url);
+              }
+            },
             title: Text(
               'お問い合わせ',
             ),
